@@ -12,8 +12,6 @@ class Scene {
     BaseObject.scene = this.scene;
     this.cameraman = new Cameraman();
     this.ship = new Ship();
-
-    this.cameraman.camera.position.z = 5;
   }
 
   loop() {
