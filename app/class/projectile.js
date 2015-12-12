@@ -12,8 +12,11 @@ class Projectile extends BaseObject {
     this.mesh = new THREE.Mesh(geometry, material);
     this.addToScene();
   }
-  update(){
-    
+  update() {
+    this.mesh.position.y += .5;
+    if (this.mesh.position.y > 100) {
+      this.remove();
+    }
   }
 
 }

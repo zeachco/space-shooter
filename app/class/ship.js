@@ -5,7 +5,7 @@ var gamepad = require('core/gamepad');
 class Ship extends BaseObject {
   constructor() {
     super();
-    this.reloadBase = 20;
+    this.reloadBase = 10;
     this.reload = 0;
 
     var geometry = new THREE.BoxGeometry(.2, 1, .1);

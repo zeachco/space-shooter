@@ -47,10 +47,17 @@ class BaseObject {
   }
 
   addToScene() {
-    BaseObject.scene.add(this.mesh);
+    if (this.mesh)
+      BaseObject.scene.add(this.mesh);
+  }
+
+  removeFromScene() {
+    if (this.mesh)
+      BaseObject.scene.remove(this.mesh);
   }
 
   remove() {
+    this.removeFromScene();
     this.removeFromIndex();
     BaseObject.all.splice(this._index_all, 1);
   }
