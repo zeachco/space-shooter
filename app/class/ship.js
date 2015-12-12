@@ -1,10 +1,13 @@
 import BaseObject from 'class/base-object';
+import Projectile from 'class/projectile';
+var gamepad = require('core/gamepad');
+
 class Ship extends BaseObject {
   constructor() {
     super();
 
     // to debug the scene is being rendered
-    var geometry = new THREE.BoxGeometry(.2, 1, 1);
+    var geometry = new THREE.BoxGeometry(.2, 1, .1);
     var material = new THREE.MeshBasicMaterial({
       color: 0x00ff00
     });
@@ -14,7 +17,12 @@ class Ship extends BaseObject {
 
   }
   update() {
-    
+    if (gamepad.state('shoot')) {
+      var projectile = new Projectile();
+      projectile.mesh.position.x = this.mesh.position.x;
+      projectile.mesh.position.y = this.mesh.position.y;
+      projectile.mesh.position.z = this.mesh.position.z;
+    }
   }
 }
 
