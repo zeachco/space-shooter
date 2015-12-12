@@ -13,7 +13,9 @@ class Ship extends BaseObject {
     this.addToScene();
 
   }
-  update() {}
+  update() {
+    
+  }
 }
 
 export default Ship;

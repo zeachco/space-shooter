@@ -11,7 +11,7 @@ class Gamepad {
   }
 
   _down(event) {
-    window.console.debug(event.which, true);
+    // window.console.debug(event.which, true); // shows being pressed
     this._keys[event.which] = true;
   }
 
