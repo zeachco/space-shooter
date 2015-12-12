@@ -5,7 +5,7 @@ var gamepad = require('core/gamepad');
 class Ship extends BaseObject {
   constructor() {
     super();
-    this.reloadBase = 10;
+    this.reloadBase = 5;
     this.reload = 0;
 
     var geometry = new THREE.BoxGeometry(.2, 1, .1);
@@ -24,9 +24,14 @@ class Ship extends BaseObject {
     if (this.reload < 0 && gamepad.state('shoot')) {
       this.reload = this.reloadBase;
       var projectile = new Projectile();
-      projectile.mesh.position.x = this.mesh.position.x;
-      projectile.mesh.position.y = this.mesh.position.y;
+      projectile.mesh.position.x = this.mesh.position.x + .1;
+      projectile.mesh.position.y = this.mesh.position.y + 0.25;
       projectile.mesh.position.z = this.mesh.position.z;
+
+      var projectile2 = new Projectile();
+      projectile2.mesh.position.x = this.mesh.position.x - .1;
+      projectile2.mesh.position.y = this.mesh.position.y + 0.25;
+      projectile2.mesh.position.z = this.mesh.position.z;
     }
   }
 }
