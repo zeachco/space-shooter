@@ -2,24 +2,24 @@ import Viewport from 'class/viewport';
 import Cameraman from 'class/cameraman';
 import BaseObject from 'class/base-object';
 import Ship from 'class/ship';
+import Gamepad from 'class/gamepad';
 
 class Scene {
   constructor() {
     this.scene = new THREE.Scene();
     this.viewport = new Viewport(undefined, 800, 600);
     BaseObject.viewport = this.viewport;
+    BaseObject.scene = this.scene;
     this.cameraman = new Cameraman();
-
     this.ship = new Ship();
+    this.gamepad = new Gamepad();
 
-    // to debug the scene is being rendered
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
-    var material = new THREE.MeshBasicMaterial({
-      color: 0x00ff00
-    });
-
-    this.cube = new THREE.Mesh(geometry, material);
-    this.scene.add(this.cube);
+    // presets
+    this.gamepad.alias('up', 38);
+    this.gamepad.alias('down', 40);
+    this.gamepad.alias('right', 39);
+    this.gamepad.alias('left', 37);
+    this.gamepad.alias('shoot', 32);
 
     this.cameraman.camera.position.z = 5;
   }

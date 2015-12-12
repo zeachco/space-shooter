@@ -46,6 +46,10 @@ class BaseObject {
     }
   }
 
+  addToScene() {
+    BaseObject.scene.add(this.mesh);
+  }
+
   remove() {
     this.removeFromIndex();
     BaseObject.all.splice(this._index_all, 1);
@@ -56,7 +60,7 @@ class BaseObject {
 BaseObject.all = [];
 BaseObject._time = {};
 var maxLatencyFPS = 1000 / 35;
-BaseObject.updateAll = function () {
+BaseObject.updateAll = function() {
   var now = Date.now();
   this._time = {
     last: this._time.now || now,
@@ -64,7 +68,7 @@ BaseObject.updateAll = function () {
     delta: Math.min(maxLatencyFPS, this._time.now - this._time.last)
   };
   // loop
-  BaseObject.all.forEach(function (d, i) {
+  BaseObject.all.forEach(function(d, i) {
     d._index_all = i;
     if (d.updatable) {
       d._update();
