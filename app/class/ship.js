@@ -21,20 +21,8 @@ class Ship extends BaseObject {
     if (this.reload >= 0) {
       this.reload -= 1;
     }
-    this.mesh.position.set(gamepad.mouse.relative.x*5, gamepad.mouse.relative.y * -10 + 5, 0);
-    if (gamepad.state('up')) {
-      this.ship.mesh.position.y += 0.1;
-    }
-    if (gamepad.state('down')) {
-      this.ship.mesh.position.y -= 0.1;
-    }
-    if (gamepad.state('left')) {
-      this.ship.mesh.position.x -= 0.1;
-    }
-    if (gamepad.state('right')) {
-      this.ship.mesh.position.x += 0.1;
-    }
-    if (this.reload < 0 && gamepad.state('shoot')) {
+    this.mesh.position.set(gamepad.mouse.relative.x * 6, gamepad.mouse.relative.y * -10 + 2, 0);
+    if (this.reload < 0 && (gamepad.state('shoot') || gamepad.mouse.state(1))) {
       this.reload = this.reloadBase;
       var projectile = new Projectile();
       projectile.mesh.position.x = this.mesh.position.x + .1;

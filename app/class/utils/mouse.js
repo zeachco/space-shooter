@@ -23,6 +23,22 @@ class Mouse {
     this._keys[event.which] = true;
   }
 
+  alias(name, key) {
+    this._alias[name] = key;
+  }
+
+  state(key) {
+    return typeof key === 'number' ? this._keys[key] : this._keys[this._alias[key]];
+  }
+
+  down(key) {
+    return this.state(key);
+  }
+
+  up(key) {
+    return !this.state(key);
+  }
+  
   _scroll(event) {
     let oz = this.z;
     this.z += event.wheelDelta > 0 ? 1 : -1;
