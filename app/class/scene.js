@@ -1,3 +1,4 @@
+import THREE from 'three';
 import Viewport from 'class/viewport';
 import Cameraman from 'class/cameraman';
 import BaseObject from 'class/base-object';

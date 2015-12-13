@@ -1,3 +1,4 @@
+import THREE from 'three';
 import BaseObject from 'class/base-object';
 import Projectile from 'class/projectile';
 var gamepad = require('core/gamepad');

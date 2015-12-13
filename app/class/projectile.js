@@ -1,13 +1,13 @@
-var THREE = require('three');
-
+import THREE from 'three';
 import BaseObject from 'class/base-object';
 
-var geometry = new THREE.BoxGeometry(.1, 0.5, .01);
+var texloader = new THREE.TextureLoader();
+var tex = texloader.load('/assets/laser.png');
 var material = new THREE.MeshBasicMaterial({
-  map: THREE.ImageUtils.loadTexture('/assets/laser.png'),
-  transparent: true,
-  color: 0xffffff
+  map: tex,
+  transparent: true
 });
+var geometry = new THREE.BoxGeometry(.1, 0.5, .01);
 
 class Projectile extends BaseObject {
   constructor() {
