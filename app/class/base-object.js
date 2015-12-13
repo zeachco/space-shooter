@@ -46,16 +46,6 @@ class BaseObject {
     }
   }
 
-  addToScene() {
-    if (this.mesh)
-      BaseObject.scene.add(this.mesh);
-  }
-
-  removeFromScene() {
-    if (this.mesh)
-      BaseObject.scene.remove(this.mesh);
-  }
-
   remove() {
     this.removeFromScene();
     this.removeFromIndex();

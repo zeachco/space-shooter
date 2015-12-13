@@ -1,9 +1,9 @@
 import THREE from 'three';
-import BaseObject from 'class/base-object';
-import Projectile from 'class/projectile';
-var gamepad = require('core/gamepad');
+import MeshObject from 'class/mesh-object';
+import Projectile from 'class/game/projectile';
+import gamepad from 'core/gamepad';
 
-class Ship extends BaseObject {
+class Ship extends MeshObject {
   constructor() {
     super();
     this.reloadBase = 5;
@@ -15,7 +15,6 @@ class Ship extends BaseObject {
     });
 
     this.mesh = new THREE.Mesh(geometry, material);
-    this.addToScene();
 
   }
   update() {

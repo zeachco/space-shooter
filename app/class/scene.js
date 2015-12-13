@@ -2,7 +2,7 @@ import THREE from 'three';
 import Viewport from 'class/viewport';
 import Cameraman from 'class/cameraman';
 import BaseObject from 'class/base-object';
-import Ship from 'class/ship';
+import Ship from 'class/game/ship';
 import gamepad from 'core/gamepad';
 
 class Scene {

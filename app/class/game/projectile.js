@@ -1,5 +1,5 @@
 import THREE from 'three';
-import BaseObject from 'class/base-object';
+import MeshObject from 'class/mesh-object';
 
 var texloader = new THREE.TextureLoader();
 var tex = texloader.load('/assets/laser.png');
@@ -9,11 +9,10 @@ var material = new THREE.MeshBasicMaterial({
 });
 var geometry = new THREE.BoxGeometry(.1, 0.5, .01);
 
-class Projectile extends BaseObject {
+class Projectile extends MeshObject {
   constructor() {
     super();
     this.mesh = new THREE.Mesh(geometry, material);
-    this.addToScene();
   }
   update() {
     this.mesh.position.y += .5;
