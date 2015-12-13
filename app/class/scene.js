@@ -21,18 +21,6 @@ class Scene {
 
   render() {
     BaseObject.updateAll();
-    if (gamepad.state('up')) {
-      this.ship.mesh.position.y += 0.1;
-    }
-    if (gamepad.state('down')) {
-      this.ship.mesh.position.y -= 0.1;
-    }
-    if (gamepad.state('left')) {
-      this.ship.mesh.position.x -= 0.1;
-    }
-    if (gamepad.state('right')) {
-      this.ship.mesh.position.x += 0.1;
-    }
     this.viewport.renderer.render(this.scene, this.cameraman.camera);
   }
 }

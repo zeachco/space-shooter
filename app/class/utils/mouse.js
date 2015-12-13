@@ -5,29 +5,58 @@ class Mouse {
     this.x = 0;
     this.y = 0;
     this.z = 0;
-    this.vx = 0;
-    this.vy = 0;
-    this.vz = 0;
-    this.ox = 0;
-    this.oy = 0;
-    this.oz = 0;
+    this.autoreset = true;
+    this._keys = {};
     window.addEventListener('mousemove', this._move.bind(this));
     window.addEventListener('mousewheel', this._scroll.bind(this));
+    window.addEventListener('mouseup', this._up.bind(this));
+    window.addEventListener('mousedown', this._down.bind(this));
+    window.addEventListener('contextmenu', e => e.preventDefault());
+  }
+
+  _up(event) {
+    this._keys[event.which] = false;
+  }
+
+  _down(event) {
+    window.console.debug(event.which); // shows being pressed
+    this._keys[event.which] = true;
   }
 
   _scroll(event) {
-    this.oz = this.z;
+    let oz = this.z;
     this.z += event.wheelDelta > 0 ? 1 : -1;
-    this.vz = this.z - this.oz;
+    this._vz = this.vz + this.z - oz;
   }
 
   _move(event) {
-    this.ox = this.x;
-    this.oy = this.y;
+    let ox = this.x;
+    let oy = this.y;
     this.x = event.x;
     this.y = event.y;
-    this.vx = this.x - this.ox;
-    this.vy = this.y - this.oy;
+    this._vx = this.vx + this.x - ox;
+    this._vy = this.vy + this.y - oy;
+  }
+
+  get vx() {
+    let val = this._vx || 0;
+    if (this.autoreset)
+      this._vx = 0;
+    return val;
+  }
+
+  get vy() {
+    let val = this._vy || 0;
+    if (this.autoreset)
+      this._vy = 0;
+    return val;
+  }
+
+  get vz() {
+    let val = this._vz || 0;
+    if (this.autoreset)
+      this._vz = 0;
+    return val;
   }
 
   get ratio() {
