@@ -7,10 +7,13 @@ import gamepad from 'core/gamepad';
 class Scene {
   constructor() {
     this.scene = new THREE.Scene();
+    this.cameraman = new Cameraman();
     this.viewport = new Viewport(undefined, 800, 600);
+    window.addEventListener('resize', function() {
+      this.viewport.resize.bind(this.cameraman.camera);
+    }.bind(this), false);
     BaseObject.viewport = this.viewport;
     BaseObject.scene = this.scene;
-    this.cameraman = new Cameraman();
     this.ship = new Ship();
   }
 

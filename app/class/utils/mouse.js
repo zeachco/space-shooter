@@ -19,7 +19,6 @@ class Mouse {
   }
 
   _down(event) {
-    window.console.debug(event.which); // shows being pressed
     this._keys[event.which] = true;
   }
 
@@ -38,7 +37,7 @@ class Mouse {
   up(key) {
     return !this.state(key);
   }
-  
+
   _scroll(event) {
     let oz = this.z;
     this.z += event.wheelDelta > 0 ? 1 : -1;
