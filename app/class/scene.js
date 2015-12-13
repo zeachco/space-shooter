@@ -10,9 +10,7 @@ class Scene {
     this.scene = new THREE.Scene();
     this.cameraman = new Cameraman();
     this.viewport = new Viewport(undefined, 800, 600);
-    window.addEventListener('resize', function() {
-      this.viewport.resize.bind(this.cameraman.camera);
-    }.bind(this), false);
+    this.viewport.camera = this.cameraman.camera;
     BaseObject.viewport = this.viewport;
     BaseObject.scene = this.scene;
     this.ship = new Ship();

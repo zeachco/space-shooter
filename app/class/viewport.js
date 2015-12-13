@@ -18,19 +18,34 @@ class Viewport {
     this.renderer.setClearColor(0x202020, 1);
     this.container = container;
     this.container.appendChild(this.canvas);
-    // this.canvas.style.cssText = 'width: 100%; height: 100%;';
+    window.addEventListener('resize', this.resize.bind(this), false);
   }
   get canvas() {
     return this.renderer.domElement;
   }
 
-  resize(camera) {
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
-    renderer.setPixelRatio(.5);
-    this.renderer.setSize(this.width, this.height);
-    camera.aspect = this.width / this.height;
-    camera.updateProjectionMatrix();
+  set camera(camera) {
+    this._camera = camera;
+    this.resize();
+  }
+
+  resize() {
+    if (!this._camera)
+      return;
+    // this.width = window.innerWidth;
+    // this.height = window.innerHeight;
+
+    // dimensions
+    // this.renderer.setSize(this.width / 2, this.height / 2);
+    this.canvas.style.width = window.innerWidth + 'px';
+    this.canvas.width = this.width;
+    this.canvas.style.height = window.innerHeight + 'px';
+    this.canvas.height = this.height;
+
+    // projection
+    // renderer.setPixelRatio(.5);
+    this._camera.aspect = this.width / this.height;
+    this._camera.updateProjectionMatrix();
   }
 }
 
