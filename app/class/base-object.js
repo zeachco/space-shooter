@@ -70,13 +70,13 @@ var maxLatencyFPS = 1000 / 35;
 
 var lastCount = 0;
 BaseObject.updateAll = function() {
-  {
-    let count = BaseObject.all.length;
-    if (lastCount !== count) {
-      window.console.debug(`${count} object(s)`);
-    }
-    lastCount = count;
-  }
+  // {
+  //   let count = BaseObject.all.length;
+  //   if (lastCount !== count) {
+  //     window.console.debug(`${count} object(s)`);
+  //   }
+  //   lastCount = count;
+  // }
   var now = Date.now();
   this._time = {
     last: this._time.now || now,

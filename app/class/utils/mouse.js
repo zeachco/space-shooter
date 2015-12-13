@@ -11,8 +11,14 @@ class Mouse {
     this.ox = 0;
     this.oy = 0;
     this.oz = 0;
-    window.addEventListener('movemove', this._move.bind(this));
-    window.addEventListener('mousescroll', this._scroll.bind(this));
+    window.addEventListener('mousemove', this._move.bind(this));
+    window.addEventListener('mousewheel', this._scroll.bind(this));
+  }
+
+  _scroll(event) {
+    this.oz = this.z;
+    this.z += event.wheelDelta > 0 ? 1 : -1;
+    this.vz = this.z - this.oz;
   }
 
   _move(event) {
@@ -24,10 +30,18 @@ class Mouse {
     this.vy = this.y - this.oy;
   }
 
-  _scroll(event) {
-    this.oz = this.z;
-    this.z = event.z;
-    this.vz = this.z - this.oz;
+  get ratio() {
+    return {
+      x: this.x / window.innerWidth,
+      y: this.y / window.innerHeight
+    }
+  }
+
+  get relative() {
+    return {
+      x: (this.x / window.innerWidth) - 0.5,
+      y: (this.y / window.innerHeight) - 0.5
+    }
   }
 }
 
