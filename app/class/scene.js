@@ -9,7 +9,6 @@ import Meteore from 'class/game/meteor';
 class Scene {
   constructor() {
     this.scene = new THREE.Scene();
-    this.meteore = new Meteore();
     this.cameraman = new Cameraman();
     this.viewport = new Viewport(undefined, 800, 600);
     this.viewport.camera = this.cameraman.camera;
@@ -24,6 +23,9 @@ class Scene {
   }
 
   render() {
+    if (Math.random() > 0.90) {
+      this.meteore = new Meteore();
+    }
     BaseObject.updateAll();
     this.viewport.renderer.render(this.scene, this.cameraman.camera);
   }
