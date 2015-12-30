@@ -49,6 +49,10 @@ class BaseObject {
   remove() {
     this.removeFromScene();
     this.removeFromIndex();
+    this.removeFormAll();
+  }
+
+  removeFormAll() {
     BaseObject.all.splice(this._index_all, 1);
   }
 

@@ -14,8 +14,15 @@ class MeshObject extends BaseObject {
       BaseObject.scene.add(this.mesh);
   }
 
+  removeFromScene() {
+    if (this.mesh)
+      BaseObject.scene.remove(this.mesh);
+  }
+
   remove() {
-    this.remove.super();
+    this.removeFromScene();
+    this.removeFromIndex();
+    this.removeFormAll();
     if (this.mesh)
       BaseObject.scene.remove(this.mesh);
   }
